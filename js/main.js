@@ -51,7 +51,7 @@ angular.module('ATM', [])
 			}*/
 		};
 
-		$scope.currentFeature = {};
+		$scope.currentFeature = null;
 
 		$scope.filterStatus = 'all';
 
@@ -82,6 +82,14 @@ angular.module('ATM', [])
 				$scope.filters[bank].isActive = !$scope.filters[bank].isActive;
 				$scope.updateFilter(bank);
 			}
+		};
+
+		$scope.showAllBanks = function() {
+			_.each($scope.filters, function(filter, bank) {
+				$scope.filters[bank].isActive = false;
+			});
+
+			$scope.updateFilter();
 		};
 
 		$scope.updateFilter = function(bank) {

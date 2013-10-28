@@ -10,6 +10,7 @@
 
 <link href="http://api.tiles.mapbox.com/mapbox.js/v1.4.0/mapbox.css" rel="stylesheet">
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
 <link href="css/main.css" rel="stylesheet">
 <!--[if lte IE 8]>
 	<link href="http://api.tiles.mapbox.com/mapbox.js/v1.4.0/mapbox.ie.css" rel="stylesheet">
@@ -20,7 +21,7 @@
 <div id="map-menu">
 	<ul>
 		<li>
-			<a href="#" ng-click="showAllLayers()">
+			<a href="#" ng-click="showAllBanks()">
 				<span ng-show="filterStatus == 'all'"><i class="fa fa-filter fa-fw"></i> Bancos</span>
 				<span ng-show="filterStatus == 'some'"><i class="fa fa-eye fa-fw"></i> Ver todos</span>
 			</a>
@@ -34,11 +35,12 @@
 	</ul>
 </div>
 
-<div id="map-detail">
-	<h2>{{ currentFeature.properties.name }}</h2>
+<div id="map-detail" ng-hide="currentFeature == null">
+	<h3><!-- <img src="design/pin-banamex.flat.png"> --> {{ currentFeature.properties.name }}</h3>
 	<p>{{ currentFeature.properties.address }}</p>
 	<p>Colonia {{ currentFeature.properties.neighborhood }}, C. P. {{ currentFeature.properties.zipCode }}</p>
-	<p><a ng-href="{{ currentFeature.properties.googleMapsSearch }}" target="_blank">Google Maps</a></p>
+	<p><a ng-href="{{ currentFeature.properties.googleMapsSearch }}" target="_blank" class="btn btn-link"><i class="fa fa-map-marker"></i> Google Maps</a></p>
+	<p><button class="btn btn-link"><i class="fa fa-warning"></i> Reportar ubicación</button></p>
 	<p style="display: none;">{{ currentFeature.properties | json }}</p>
 </div>
 

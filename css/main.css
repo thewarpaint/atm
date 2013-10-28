@@ -14,14 +14,14 @@ body {
 /* map menu, map detail */
 #map-menu, #map-detail {
 	position: absolute;
-	left: 10px;
 	z-index: 100;
 	opacity: 0.85;
 }
 
 /* map menu */
 #map-menu {
-	top: 76px;
+	top: 10px;
+	left: 48px;
 }
 
 #map-menu ul {
@@ -69,8 +69,9 @@ body {
 
 /* map detail */
 #map-detail {
-	min-width: 250px;
+	left: 10px;
 	bottom: 60px;
+	min-width: 250px;
 	padding: 5px 10px;
 	font-size: 14px;
 	border: 1px solid #2c3e50; /* @palette-midnight-blue; */
