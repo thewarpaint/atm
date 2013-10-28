@@ -1,6 +1,7 @@
 body {
 	margin: 0;
 	padding: 0;
+	font-family: 'Arial', sans-serif;
 }
 
 #map {
@@ -10,14 +11,17 @@ body {
 	width: 100%;
 }
 
-/* map menu */
-#map-menu {
+/* map menu, map detail */
+#map-menu, #map-detail {
 	position: absolute;
-	top: 76px;
 	left: 10px;
 	z-index: 100;
-	font-family: 'Arial', sans-serif;
 	opacity: 0.85;
+}
+
+/* map menu */
+#map-menu {
+	top: 76px;
 }
 
 #map-menu ul {
@@ -61,6 +65,19 @@ body {
 
 #map-menu a.active {
 	background-color: #3498db; /* @palette-peter-river; */
+}
+
+/* map detail */
+#map-detail {
+	min-width: 250px;
+	bottom: 60px;
+	padding: 5px 10px;
+	font-size: 14px;
+	border: 1px solid #2c3e50; /* @palette-midnight-blue; */
+	background-color: #34495e; /* @palette-wet-asphalt; */
+	color: #ecf0f1; /* @palette-clouds; */
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
 }
 
 /* map footer */

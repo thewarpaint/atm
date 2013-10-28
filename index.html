@@ -34,6 +34,14 @@
 	</ul>
 </div>
 
+<div id="map-detail">
+	<h2>{{ currentFeature.properties.name }}</h2>
+	<p>{{ currentFeature.properties.address }}</p>
+	<p>Colonia {{ currentFeature.properties.neighborhood }}, C. P. {{ currentFeature.properties.zipCode }}</p>
+	<p><a ng-href="{{ currentFeature.properties.googleMapsSearch }}" target="_blank">Google Maps</a></p>
+	<p style="display: none;">{{ currentFeature.properties | json }}</p>
+</div>
+
 <div id="map-footer">
 	<p class="brand">&copy; 2013 Eduardo García</p>
 	<p>Los logotipos aquí presentados con fines informativos son marcas registradas y propiedad de la institución bancaria correspondiente.</p>

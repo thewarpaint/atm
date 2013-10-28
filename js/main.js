@@ -12,6 +12,9 @@ angular.module('ATM', [])
 
 		$scope.map.markerLayer.on('click', function(e) {
 			$scope.map.panTo(e.layer.getLatLng()); /* .setZoom(15, true) */
+
+			$scope.currentFeature = e.layer.feature;
+			$scope.$apply();
 		});
 
 		$scope.BankIcon = L.Icon.extend({
@@ -47,6 +50,8 @@ angular.module('ATM', [])
 				'isActive': false
 			}*/
 		};
+
+		$scope.currentFeature = {};
 
 		$scope.filterStatus = 'all';
 
