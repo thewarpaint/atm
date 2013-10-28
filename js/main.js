@@ -72,35 +72,6 @@ angular.module('ATM', [])
 			$scope.map.setView([position.coords.latitude, position.coords.longitude], 15);
 		};
 
-		$scope.addLayer = function(layer) {
-			if(!$scope.map.hasLayer(layer)) {
-				$scope.map.addLayer(layer);
-			}
-		};
-
-		$scope.removeLayer = function(layer) {
-			if($scope.map.hasLayer(layer)) {
-				$scope.map.removeLayer(layer);
-			}
-		};
-
-		$scope.showAllLayers = function() {
-			_.each($scope.filters,
-				function(filter, bank) {
-					$scope.filters[bank].isActive = false;
-					$scope.updateFilter(bank);
-				}
-			);
-		};
-
-		$scope.fillLayers = function() {
-			_.each($scope.layers, $scope.addLayer);
-		};
-
-		$scope.clearLayers = function() {
-			_.each($scope.layers, $scope.removeLayer);
-		};
-
 		$scope.toggleBank = function(bank) {
 			if(angular.isDefined($scope.filters[bank])) {
 				$scope.filters[bank].isActive = !$scope.filters[bank].isActive;
@@ -109,33 +80,25 @@ angular.module('ATM', [])
 		};
 
 		$scope.updateFilter = function(bank) {
-			var filterOnCount = 0,
-				oldFilterStatus = $scope.filterStatus;
+			var filters = [];
 
-			_.each($scope.filters, function(filter) {
-				if(filter.isActive) filterOnCount++;
+			_.each($scope.filters, function(filter, bank) {
+				if(filter.isActive) filters.push(bank);
 			});
 
-			$scope.filterStatus = (filterOnCount == 0 || filterOnCount == $scope.filters.length) ? 'all' : 'some';
+			if(filters.length == 0 || filters.length == $scope.filters.length) {
+				$scope.filterStatus = 'all';
 
-			// Pre
-			if(oldFilterStatus == 'all' && $scope.filterStatus == 'some') {
-				$scope.clearLayers();
+				$scope.map.markerLayer.setFilter(function(f) {
+					return true;
+				});
 			}
-
-			// Add/remove layers
-			if(angular.isDefined(bank)) {
-				if($scope.filters[bank].isActive) {
-					$scope.addLayer($scope.layers[bank]);
-				}
-				else {
-					$scope.removeLayer($scope.layers[bank]);
-				}
-			}
-
-			// Post
-			if($scope.filterStatus == 'all' && filterOnCount == 0) {
-				$scope.fillLayers();
+			else {
+				$scope.filterStatus = 'some';
+				
+				$scope.map.markerLayer.setFilter(function(f) {
+					return _.contains(filters, f.properties['bankName']);
+				});
 			}
 		};
 
