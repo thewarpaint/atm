@@ -38,14 +38,16 @@
 	<div class="panel-body">
 		<p>{{ currentFeature.properties.address }}</p>
 		<p>Colonia {{ currentFeature.properties.neighborhood }}, C. P. {{ currentFeature.properties.zipCode }}</p>
-		<p><a ng-href="{{ currentFeature.properties.googleMapsSearch }}" target="_blank" class="btn btn-default"><i class="fa fa-map-marker"></i> Google Maps</a> <button class="btn btn-warning"><i class="fa fa-warning"></i> Reportar ubicación</button></p>
+		<p><a ng-href="{{ currentFeature.properties.googleMapsSearch }}" target="_blank" class="btn btn-primary"><i class="fa fa-map-marker"></i> Google Maps</a> <button class="btn btn-warning"><i class="fa fa-warning"></i> Reportar ubicación</button></p>
 		<p style="display: none;">{{ currentFeature.properties | json }}</p>
 	</div>
 </div>
 
 <div id="map-footer">
-	<p class="brand">&copy; 2013 Eduardo García</p>
-	<p>Los logotipos aquí presentados con fines informativos son marcas registradas y propiedad de la institución bancaria correspondiente.</p>
+	<div class="container">
+		<p class="brand">&copy; 2013 Eduardo García</p>
+		<p class="text-muted">Los logotipos aquí presentados con fines informativos son marcas registradas y propiedad de la institución bancaria correspondiente.</p>
+	</div>
 </div>
 
 <div id="map"></div>

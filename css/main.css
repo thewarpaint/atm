@@ -1,3 +1,10 @@
+/* #2c3e50; @palette-midnight-blue; */
+/* #34495e; @palette-wet-asphalt; */
+/* #ecf0f1; @palette-clouds; */
+/* #2ecc71; @palette-emerald; */
+/* #e74c3c; @palette-alizarin; */
+/* #3498db; @palette-peter-river; */
+
 body {
 	margin: 0;
 	padding: 0;
@@ -11,8 +18,8 @@ body {
 	width: 100%;
 }
 
-/* map menu, map detail */
-#map-menu, #map-detail {
+/* map menu, map detail, map footer */
+#map-menu, #map-detail, #map-footer {
 	position: absolute;
 	z-index: 100;
 	opacity: 0.9;
@@ -24,43 +31,23 @@ body {
 	left: 48px;
 }
 
-/*#map-menu a {
-	/*border: 1px solid #2c3e50; /* @palette-midnight-blue; */
-	/*background-color: #34495e; /* @palette-wet-asphalt; */
-	/*color: #ecf0f1; /* @palette-clouds; */
-/*}
-
-#map-menu a:hover {
-	background-color: #2ecc71; /* @palette-emerald; */
-/*}
-
-/*#map-menu a.active:hover {
-	background-color: #e74c3c; /* @palette-alizarin; */
-/*}*/
-
-/*#map-menu a.active {
-	background-color: #3498db; /* @palette-peter-river; */
-/*}*/
-
 /* map detail */
 #map-detail {
 	left: 10px;
 	bottom: 60px;
 }
 
+.panel-heading .panel-title {
+	font-weight: bold;
+}
+
 /* map footer */
 #map-footer {
-	position: absolute;
-	box-sizing: border-box;
-	min-width: 100%;
+	width: 100%;
 	bottom: 0px;
-	z-index: 100;
-	font-family: 'Arial', sans-serif;
-	opacity: 0.85;
-	font-size: 11px;
-	border: 1px solid #2c3e50; /* @palette-midnight-blue; */
-	background-color: #34495e; /* @palette-wet-asphalt; */
-	color: #ecf0f1; /* @palette-clouds; */
+	opacity: 1;
+	background-color: #f5f5f5;
+	border-top: 1px solid #ddd;
 }
 
 #map-footer p {
@@ -68,6 +55,5 @@ body {
 }
 
 #map-footer .brand {
-	font-size: 12px;
 	color: #2ecc71; /* @palette-emerald; */
 }
