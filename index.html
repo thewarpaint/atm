@@ -19,29 +19,28 @@
 <body ng-app="ATM" ng-controller="ATMCtrl">
 
 <div id="map-menu">
-	<ul>
-		<li>
-			<a href="#" ng-click="showAllBanks()">
-				<span ng-show="filterStatus == 'all'"><i class="fa fa-filter fa-fw"></i> Bancos</span>
-				<span ng-show="filterStatus == 'some'"><i class="fa fa-eye fa-fw"></i> Ver todos</span>
-			</a>
-		</li>
-		<li ng-repeat="(bank, filter) in filters">
-			<a href="#" ng-class="{ 'active': filters[bank].isActive }" ng-click="toggleBank(bank)">
-				<i class="fa fa-fw" ng-class="{ true: 'fa-check-square', false: 'fa-square' }[filters[bank].isActive]"></i>
-				{{ filter.label }}
-			</a>
-		</li>
-	</ul>
+	<div class="list-group">
+		<a href="#" class="list-group-item" ng-click="showAllBanks()">
+			<span ng-show="filterStatus == 'all'"><i class="fa fa-filter fa-fw"></i> Bancos</span>
+			<span ng-show="filterStatus == 'some'"><i class="fa fa-eye fa-fw"></i> Ver todos</span>
+		</a>
+		<a href="#" ng-repeat="(bank, filter) in filters" class="list-group-item" ng-class="{ 'active': filters[bank].isActive }" ng-click="toggleBank(bank)">
+			<i class="fa fa-fw" ng-class="{ true: 'fa-check-square', false: 'fa-square-o' }[filters[bank].isActive]"></i>
+			{{ filter.label }}
+		</a>
+	</div>
 </div>
 
-<div id="map-detail" ng-hide="currentFeature == null">
-	<h3><!-- <img src="design/pin-banamex.flat.png"> --> {{ currentFeature.properties.name }}</h3>
-	<p>{{ currentFeature.properties.address }}</p>
-	<p>Colonia {{ currentFeature.properties.neighborhood }}, C. P. {{ currentFeature.properties.zipCode }}</p>
-	<p><a ng-href="{{ currentFeature.properties.googleMapsSearch }}" target="_blank" class="btn btn-link"><i class="fa fa-map-marker"></i> Google Maps</a></p>
-	<p><button class="btn btn-link"><i class="fa fa-warning"></i> Reportar ubicación</button></p>
-	<p style="display: none;">{{ currentFeature.properties | json }}</p>
+<div id="map-detail" class="panel panel-default" ng-hide="currentFeature == null">
+	<div class="panel-heading">
+		<h2 class="panel-title"><!-- <img src="design/pin-banamex.flat.png"> --> {{ currentFeature.properties.name }}</h2>
+	</div>
+	<div class="panel-body">
+		<p>{{ currentFeature.properties.address }}</p>
+		<p>Colonia {{ currentFeature.properties.neighborhood }}, C. P. {{ currentFeature.properties.zipCode }}</p>
+		<p><a ng-href="{{ currentFeature.properties.googleMapsSearch }}" target="_blank" class="btn btn-default"><i class="fa fa-map-marker"></i> Google Maps</a> <button class="btn btn-warning"><i class="fa fa-warning"></i> Reportar ubicación</button></p>
+		<p style="display: none;">{{ currentFeature.properties | json }}</p>
+	</div>
 </div>
 
 <div id="map-footer">
