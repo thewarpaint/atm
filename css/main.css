@@ -4,6 +4,7 @@
 /* #2ecc71; @palette-emerald; */
 /* #e74c3c; @palette-alizarin; */
 /* #3498db; @palette-peter-river; */
+/* #bdc3c7; @palette-silver; */
 
 body {
 	margin: 0;
@@ -19,16 +20,48 @@ body {
 }
 
 /* map menu, map detail, map footer */
-#map-menu, #map-detail, #map-footer {
+#map-menu, #map-search, #map-detail, #map-footer, #map-brand {
 	position: absolute;
 	z-index: 100;
 	opacity: 0.9;
 }
 
+/* map brand */
+#map-brand {
+	top: 18px;
+	left: 55px;
+	color: #fff;
+	text-shadow: #bdc3c7 2px 2px 2px;
+	opacity: 1;
+}
+
+#map-brand h1 {
+	margin: 0px;
+}
+
 /* map menu */
 #map-menu {
+	top: 96px;
+	right: 10px;
+	min-width: 250px;
+}
+
+/* map search */
+#map-search {
 	top: 10px;
-	left: 48px;
+	right: 10px;
+	min-width: 250px;
+	width: 33%;
+}
+
+#map-search .panel-body {
+	padding: 10px;
+}
+
+#map-search .help-block {
+	margin-left: 14px;
+	margin-bottom: 0px;
+	font-size: 11px;
 }
 
 /* map detail */
@@ -56,4 +89,18 @@ body {
 
 #map-footer .brand {
 	color: #2ecc71; /* @palette-emerald; */
+}
+
+/* misc */
+button.btn-striped[disabled] {
+	-webkit-animation: progress-bar-stripes 2s linear infinite;
+	-moz-animation: progress-bar-stripes 2s linear infinite;
+	-ms-animation: progress-bar-stripes 2s linear infinite;
+	-o-animation: progress-bar-stripes 2s linear infinite;
+	animation: progress-bar-stripes 2s linear infinite;
+	background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
+	background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+	background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+	background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+	background-size: 40px 40px;
 }

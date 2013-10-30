@@ -52,8 +52,8 @@ angular.module('ATM', [])
 		};
 
 		$scope.currentFeature = null;
-
 		$scope.filterStatus = 'all';
+		$scope.searchZoom = 16;
 
 		$scope.init = function() {
 			if(navigator.geolocation) {
@@ -74,7 +74,7 @@ angular.module('ATM', [])
 		};
 
 		$scope.geolocationSuccess = function (position) {
-			$scope.map.setView([position.coords.latitude, position.coords.longitude], 15);
+			$scope.map.setView([position.coords.latitude, position.coords.longitude], $scope.searchZoom);
 		};
 
 		$scope.toggleBank = function(bank) {
@@ -115,5 +115,45 @@ angular.module('ATM', [])
 			}
 		};
 
+		/* search */
+		$scope.searchOptions = {
+			'exampleSearch': 'Mazatlán 152, Condesa, México'
+		};
+
+		$scope.textSearch = '';
+		$scope.searchInProgress = false;
+
+		$scope.exampleSearch = function() {
+			$scope.textSearch = $scope.searchOptions.exampleSearch;
+			$scope.search();
+		};
+
+		$scope.search = function() {
+			if($scope.textSearch != '') {
+				$scope.searchInProgress = true;
+
+				$http.get('http://maps.googleapis.com/maps/api/geocode/json?address=' + encodeURIComponent($scope.textSearch) + '&sensor=false')
+					.success(function(data) {
+						if(data.results.length > 0) {
+							$scope.map.setZoom($scope.searchZoom, true).panTo(data.results[0].geometry.location);
+						}
+						else {
+
+						}
+
+						$scope.searchInProgress = false;
+					})
+					.error(function(data) {
+						$scope.searchInProgress = false;
+					});
+			}
+		};
+
+		/* init */
 		$scope.init();
 	}]);
+
+angular.module('ATM')
+	.config(function($httpProvider) {
+		delete $httpProvider.defaults.headers.common['X-Requested-With'];
+	});

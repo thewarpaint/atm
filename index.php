@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta charset="utf-8">
 <title>Cajeros automáticos del Distrito Federal</title>
-<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
 <script src="http://api.tiles.mapbox.com/mapbox.js/v1.4.0/mapbox.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
 
@@ -17,10 +17,6 @@
 <![endif]-->
 </head>
 <body ng-app="ATM" ng-controller="ATMCtrl">
-
-<div id="map-brand">
-	<h1>Cajero Ya</h1>
-</div>
 
 <div id="map-menu">
 	<div class="list-group">
@@ -40,7 +36,7 @@
 		<form ng-submit="search()" class="form-inline" role="form">
 			<div class="input-group">
 				<input type="text" class="form-control" placeholder="Búsqueda por dirección" ng-model="textSearch">
-				<span class="input-group-btn"><button type="submit" class="btn btn-primary btn-striped" ng-disabled="searchInProgress"><i class="fa fa-search"></i></button></span>
+				<span class="input-group-btn"><button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button></span>
 			</div>
 			<span class="help-block">Ejemplo: <a href="#" ng-click="exampleSearch()">{{ searchOptions.exampleSearch }}</a>.</span>
 		</form>
