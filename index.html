@@ -22,7 +22,7 @@
 	<h1>Cajero Ya</h1>
 </div>
 
-<div id="map-menu">
+<div id="map-menu" class="hide">
 	<div class="list-group">
 		<a href="#" class="list-group-item" ng-click="showAllBanks()">
 			<span ng-show="filterStatus == 'all'"><i class="fa fa-filter fa-fw"></i> Bancos</span>
@@ -44,6 +44,21 @@
 			</div>
 			<span class="help-block">Ejemplo: <a href="#" ng-click="exampleSearch()">{{ searchOptions.exampleSearch }}</a>.</span>
 		</form>
+
+		<div class="btn-toolbar filter-bar" role="toolbar">
+			<div class="btn-group btn-group-lg">
+				<button type="button" class="btn btn-default" ng-click="showAllBanks()">
+					<span ng-show="filterStatus == 'all'"><i class="fa fa-filter fa-fw"></i></span>
+					<span ng-show="filterStatus == 'some'"><i class="fa fa-eye fa-fw"></i></span>
+				</button>
+				<button type="button" class="btn btn-default btn-bank btn-banamex" ng-class="{ 'on': filters['banamex'].isActive }" ng-click="toggleBank('banamex')"><img src="design/filter-banamex.flat.png"></button>
+				<button type="button" class="btn btn-default btn-bank btn-bbva-bancomer" ng-class="{ 'on': filters['bancomer'].isActive }" ng-click="toggleBank('bancomer')"><img src="design/filter-bbva-bancomer.flat.png"></button>
+			</div>
+
+			<div class="btn-group btn-group-lg pull-right">
+				<button class="btn btn-default"><i class="fa fa-crosshairs fa-fw"></i></button>
+			</div>
+		</div>
 	</div>
 </div>
 

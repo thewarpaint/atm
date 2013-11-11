@@ -27,7 +27,7 @@ angular.module('ATM', [])
 
 		$scope.icons = {
 			'banamex': new $scope.BankIcon({ iconUrl: 'design/pin-banamex.flat.png' }),
-			'bancomer': new $scope.BankIcon({ iconUrl: 'design/pin-bancomer.flat.png' }),
+			'bancomer': new $scope.BankIcon({ iconUrl: 'design/pin-bbva-bancomer.flat.png' }),
 			'santander': new $scope.BankIcon({ iconUrl: 'design/pin-santander.flat.png' })
 		};
 
